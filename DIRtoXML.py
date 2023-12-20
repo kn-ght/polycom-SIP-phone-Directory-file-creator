@@ -3,10 +3,10 @@ from ldap3 import Server, Connection, ALL, SAFE_SYNC
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 #change based on your server
-server = Server('ldap://172.19.184.99:389')
+server = Server('ldap://serverip:389')
 #change based upon your server
-conn = Connection(server, 'CN=Administrator, CN=Users,DC=knight,DC=local', 'BOCES10!', client_strategy=SAFE_SYNC, auto_bind=True)
-status, result, response, _ = conn.search('OU=KnightCorp,DC=knight,DC=local', '(objectclass=organizationalPerson)', attributes='*')
+conn = Connection(server, 'CN=Adminuser, CN=Users,DC=---,DC=local', 'password', client_strategy=SAFE_SYNC, auto_bind=True)
+status, result, response, _ = conn.search('OU=organizationalunit,DC=---,DC=local', '(objectclass=organizationalPerson)', attributes='*')
 root = ET.Element("directory")
 item_list = ET.SubElement(root, "item_list")
 list_of_dicts = [dict(obj) for obj in response]
